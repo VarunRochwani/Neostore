@@ -10,7 +10,7 @@ import UIKit
 
 extension MyCartViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let cartItems = cartList
+        guard let cartItems = myCartViewModel.cartList
         else{
             return 0
         }
@@ -22,7 +22,7 @@ extension MyCartViewController:UITableViewDelegate,UITableViewDataSource{
         let orderNowTableViewCell = tableView.dequeueReusableCell(withIdentifier: "OrderNowTableViewCell", for: indexPath) as! OrderNowTableViewCell
         
         switch indexPath.row{
-        case cartList?.count:
+        case myCartViewModel.cartList?.count:
             orderNowTableViewCell.totalAmt.text = "₹.\(self.totalAmt)"
             orderNowTableViewCell.orderNowClick = {
                 self.navigate(storyBoard: "Order", identifier: "ShippingAddressViewController", vc: self)
@@ -32,9 +32,9 @@ extension MyCartViewController:UITableViewDelegate,UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MyCartTableViewCell
             
             cell.selectionStyle = .none
-            cell.productNameLbL.text = cartList?[indexPath.row].product.name
+            cell.productNameLbL.text = myCartViewModel.cartList?[indexPath.row].product.name
             
-            if let img = URL(string: cartList?[indexPath.row].product.productImages ?? "") {
+            if let img = URL(string: myCartViewModel.cartList?[indexPath.row].product.productImages ?? "") {
                 URLSession.shared.dataTask(with: img) { (data, response, error) in
                     if let data = data, let image = UIImage(data: data) {
                         DispatchQueue.main.async {
@@ -43,15 +43,15 @@ extension MyCartViewController:UITableViewDelegate,UITableViewDataSource{
                     }
                 }.resume()
             }
-            cell.productCategory.text = cartList?[indexPath.row].product.productCategory
-            cell.quantityDropDown.text = "\(cartList?[indexPath.row].quantity ?? 0)"
-            quantity = cartList?[indexPath.row].quantity ?? 0
-            cell.rateLbl.text = "₹.\(quantity * (cartList?[indexPath.row].product.cost ?? 0) ).00"
+            cell.productCategory.text = myCartViewModel.cartList?[indexPath.row].product.productCategory
+            cell.quantityDropDown.text = "\(myCartViewModel.cartList?[indexPath.row].quantity ?? 0)"
+            quantity = myCartViewModel.cartList?[indexPath.row].quantity ?? 0
+            cell.rateLbl.text = "₹.\(quantity * (myCartViewModel.cartList?[indexPath.row].product.cost ?? 0) ).00"
             cell.selectionAction = { [weak self] (item: String) in
                 guard let _ = self else { return }
                 cell.quantityDropDown.text = item
                 
-                let param = ["product_id":self?.cartList?[indexPath.row].product.id ?? 0,"quantity":item]
+                let param = ["product_id":self?.myCartViewModel.cartList?[indexPath.row].product.id ?? 0,"quantity":item]
                 
                 //Edit cart Api call
                 self?.myCartViewModel.editCartData(param) { detailResponse in
@@ -72,7 +72,7 @@ extension MyCartViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
             let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, complete in
 
-                let param = ["product_id": self.cartList?[indexPath.row].product.id]
+                let param = ["product_id": self.myCartViewModel.cartList?[indexPath.row].product.id]
                 self.myCartViewModel.deleteCartData(param as [String : Any]) { detailResponse in
                     self.fetchCartDetails()
                     complete(true)
@@ -107,7 +107,7 @@ extension MyCartViewController{
         myCartViewModel.fetchCartData({ detailResponse in
           if detailResponse.status == 200{
               
-              self.cartList = detailResponse.data
+              //self.cartList = detailResponse.data
               self.totalAmt = detailResponse.total ?? 0
               DispatchQueue.main.async {
                   self.myCartTableView.reloadData()

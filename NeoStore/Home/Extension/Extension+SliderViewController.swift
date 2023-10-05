@@ -8,9 +8,7 @@
 import Foundation
 import UIKit
 
-//protocol GetScreen{
-//    func goToScreen(viewController:String,StoryBoard:String)
-//}
+
 extension SlidingViewController{
     func setProfileImage(){
         profilePicture.layer.borderWidth = 1
@@ -23,7 +21,6 @@ extension SlidingViewController{
         navigationDrawerViewModel.fetchNavigationDrawerData {
             detailResponse in
             if detailResponse.status == 200{
-                self.naviagtionDrawerdetails = detailResponse
                 self.loadImage(detailResponse.data.userData.profilePic ?? "")
                 self.userName.text = detailResponse.data.userData.username
                 self.emailLbl.text = detailResponse.data.userData.email
@@ -52,14 +49,14 @@ extension SlidingViewController{
 
 extension SlidingViewController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let _ = naviagtionDrawerdetails else { return 0}
+        guard let _ = navigationDrawerViewModel.naviagtionDrawerdetails else { return 0}
         return NavigationDrawerOptionsList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:
                                                     "cell", for: indexPath) as! NavigationDrawerTableViewCell
-        guard let drawerdetail = naviagtionDrawerdetails else{
+        guard let drawerdetail = navigationDrawerViewModel.naviagtionDrawerdetails else{
             return UITableViewCell()
         }
         cell.configureCell(NavigationDrawerOptionsList[indexPath.row],
@@ -78,7 +75,7 @@ extension SlidingViewController:UITableViewDataSource,UITableViewDelegate{
    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigateToHomeVc?(indexPath.row)
+        navigateToHomeVc?(NavigationDrawerOptionsList[indexPath.row].OptionId)
         self.dismiss(animated: false)
     }
 }

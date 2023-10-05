@@ -11,16 +11,16 @@ import UIKit
 extension ProductDetailViewController{
     func fetchAndSetUpProductDetails(){
         productDetailViewModel.getProductDetail(productId ?? 0) { [self] ProductDetail in
-            productDetail = ProductDetail
-            navigationBarUtility.setTitle(productDetail?.name ?? "", self)
-            self.productNameLbl.text = ProductDetail.name
-            self.producerLbl.text = ProductDetail.producer
-            setProductCategory(productDetail?.productCategoryID ?? 0)
-            setProductRating(ProductDetail.rating)
-            costLbl.text = "Rs.\(ProductDetail.cost)"
-            descriptionLbl.text = ProductDetail.description
-            loadImage(ProductDetail.productImages[0].image)
-            selectedImageUrl=productDetail?.productImages[0].image ?? ""  
+//            productDetail = productDetailViewModel.productDetail
+            navigationBarUtility.setTitle(productDetailViewModel.productDetail?.name ?? "", self)
+            self.productNameLbl.text = productDetailViewModel.productDetail?.name
+            self.producerLbl.text = productDetailViewModel.productDetail?.producer
+            setProductCategory(productDetailViewModel.productDetail?.productCategoryID ?? 0)
+            setProductRating(productDetailViewModel.productDetail?.rating ?? 0)
+            costLbl.text = "Rs.\(productDetailViewModel.productDetail?.cost)"
+            descriptionLbl.text = productDetailViewModel.productDetail?.description
+            loadImage(productDetailViewModel.productDetail?.productImages[0].image ?? "")
+            selectedImageUrl=productDetailViewModel.productDetail?.productImages[0].image ?? ""
         }
         
     }
@@ -104,14 +104,16 @@ extension ProductDetailViewController{
 extension ProductDetailViewController:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return productDetail?.productImages.count ?? 0
+            return productDetailViewModel.productDetail?.productImages.count ?? 0
         }
         
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for:indexPath ) as! ProductDetailCollectionViewCell
             
-            cell.setProductCellImage((productDetail?.productImages[indexPath.row])!)
-            
+            cell.setProductCellImage((productDetailViewModel.productDetail?.productImages[indexPath.row])!)
+            if indexPath.row == 0{
+                collectionView.cellForItem(at: indexPath)?.isSelected = true
+            }
             return cell
         }
         
@@ -130,9 +132,9 @@ extension ProductDetailViewController:UICollectionViewDelegate,UICollectionViewD
         }
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             
-            selectedImageUrl = productDetail?.productImages[indexPath.row].image ?? ""
+            selectedImageUrl = productDetailViewModel.productDetail?.productImages[indexPath.row].image ?? ""
             
-            loadImage(productDetail?.productImages[indexPath.row].image ?? "")
+            loadImage(productDetailViewModel.productDetail?.productImages[indexPath.row].image ?? "")
             
             var selectedIndexPath :IndexPath?
             
@@ -141,7 +143,7 @@ extension ProductDetailViewController:UICollectionViewDelegate,UICollectionViewD
                 }
             
             selectedIndexPath = indexPath
-                collectionView.cellForItem(at: indexPath)?.isSelected = true
+            collectionView.cellForItem(at: indexPath)?.isSelected = true
             
         }
     

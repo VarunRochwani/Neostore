@@ -18,7 +18,7 @@ struct NavigationDrawerModel: Codable {
 struct DataClass: Codable {
     let userData: UserDetails
     let productCategories: [ProductCategory]
-    let totalCarts, totalOrders: Int
+    let totalCarts,totalOrders: Int
 
     enum CodingKeys: String, CodingKey {
         case userData = "user_data"

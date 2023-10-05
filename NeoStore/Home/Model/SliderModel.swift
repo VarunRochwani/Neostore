@@ -16,16 +16,16 @@ struct HomeSliderModel{
     }
     mutating func setHomeContent(){
         
-        var sliderContent1 = CollectionViewContent(contentImage: UIImage(named: Images.sliderImage1)!,contentId: 0)
+        let sliderContent1 = CollectionViewContent(contentImage: UIImage(named: Images.sliderImage1)!,contentId: 0)
         HomesilderContent.append(sliderContent1)
         
-        var sliderContent2 = CollectionViewContent(contentImage: UIImage(named: Images.sliderImage2)!,contentId: 1)
+        let sliderContent2 = CollectionViewContent(contentImage: UIImage(named: Images.sliderImage2)!,contentId: 1)
         HomesilderContent.append(sliderContent2)
         
-        var sliderContent3 = CollectionViewContent(contentImage: UIImage(named: Images.sliderImage3)!,contentId: 2)
+        let sliderContent3 = CollectionViewContent(contentImage: UIImage(named: Images.sliderImage3)!,contentId: 2)
         HomesilderContent.append(sliderContent3)
         
-        var sliderContent4 = CollectionViewContent(contentImage: UIImage(named: Images.sliderImage4)!,contentId: 3)
+        let sliderContent4 = CollectionViewContent(contentImage: UIImage(named: Images.sliderImage4)!,contentId: 3)
         HomesilderContent.append(sliderContent4)
     }
     

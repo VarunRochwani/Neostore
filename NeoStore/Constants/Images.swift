@@ -27,5 +27,6 @@ struct Images{
     static let leftBackButton = "chevron.left"
     static let searchButton = "magnifyingglass"
     static let menuIcon = "menu_icon"
+    static let searchIcon = "search_icon"
     
 }

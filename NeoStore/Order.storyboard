@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Gotham-BookItalic.otf">
+        <array key="GothamBookItalic.ttf">
             <string>Gotham-BookItalic</string>
         </array>
     </customFonts>
@@ -245,7 +245,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fpb-Xp-vVU">
-                                <rect key="frame" x="0.0" y="145.33333333333331" width="393" height="672.66666666666674"/>
+                                <rect key="frame" x="0.0" y="135.33333333333331" width="393" height="682.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" systemColor="systemGray5Color"/>
                                 <prototypes>
@@ -339,8 +339,8 @@
                             <constraint firstItem="ork-gk-cXi" firstAttribute="trailing" secondItem="RLw-sT-gXL" secondAttribute="trailing" id="R9T-oj-Ccf"/>
                             <constraint firstItem="RLw-sT-gXL" firstAttribute="top" secondItem="ork-gk-cXi" secondAttribute="top" id="RHc-Ff-jGx"/>
                             <constraint firstItem="RLw-sT-gXL" firstAttribute="leading" secondItem="ork-gk-cXi" secondAttribute="leading" id="a2O-xD-5Yl"/>
-                            <constraint firstItem="fpb-Xp-vVU" firstAttribute="top" secondItem="RLw-sT-gXL" secondAttribute="bottom" constant="10" id="b6L-sx-gQd"/>
                             <constraint firstItem="fpb-Xp-vVU" firstAttribute="bottom" secondItem="ork-gk-cXi" secondAttribute="bottom" id="tEW-bC-xEA"/>
+                            <constraint firstItem="fpb-Xp-vVU" firstAttribute="top" secondItem="RLw-sT-gXL" secondAttribute="bottom" id="xxd-GB-cV6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BPT-h8-c4C"/>

@@ -10,8 +10,8 @@ import Foundation
 class ProductDetailViewModel{
     
     let httpUtility = HttpUtility.getUtility()
-    
-    
+   //  var productImageDetails:[ProductImage]?
+    var productDetail:ProductDetails?
     func getProductDetail(_ productId:Int,_ completion:@escaping(ProductDetails)->Void){
         
         let requestBody = ["product_id":productId]
@@ -19,6 +19,8 @@ class ProductDetailViewModel{
         do {
             try httpUtility.getApiData(requestUrl: UrlConstants.getProductDetailUrl, requestBody: requestBody, resultType:ProductDetailModel.self) { result in
                if result?.status == 200{
+                   //self.productImageDetails =
+                   self.productDetail = result!.data
                    completion(result!.data)
                 }
             }

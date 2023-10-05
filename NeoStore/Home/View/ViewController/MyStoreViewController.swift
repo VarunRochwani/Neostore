@@ -12,8 +12,6 @@ class MyStoreViewController: UIViewController {
 
     
     @IBOutlet weak var storeMapView: MKMapView!
-    
-    
     @IBOutlet weak var storeLocationTableView: UITableView!
     
     let storeLocationList:[StoreLocationModel] = Storelocation().getStroreLocationList()

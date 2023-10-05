@@ -28,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="92" width="414" height="804"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ucO-5r-SmP">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="791"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rLq-aE-hSq">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="343"/>
@@ -82,10 +82,10 @@
                                                 </constraints>
                                             </pageControl>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUc-6z-cxk">
-                                                <rect key="frame" x="0.0" y="343" width="414" height="448"/>
+                                                <rect key="frame" x="0.0" y="343" width="414" height="553"/>
                                                 <subviews>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QD2-Pl-crS">
-                                                        <rect key="frame" x="20" y="17.5" width="374" height="400.5"/>
+                                                        <rect key="frame" x="20" y="17.5" width="374" height="505.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="roE-7V-Jhn">
                                                             <size key="itemSize" width="180" height="162"/>
@@ -165,7 +165,7 @@
                             <constraint firstAttribute="bottom" secondItem="3sO-V9-aEo" secondAttribute="bottom" id="cs8-vo-4Vn"/>
                             <constraint firstItem="3sO-V9-aEo" firstAttribute="leading" secondItem="GYa-bn-WKa" secondAttribute="leading" id="f1f-ha-8vD"/>
                             <constraint firstItem="ucO-5r-SmP" firstAttribute="width" secondItem="o3v-Kj-rhW" secondAttribute="width" id="f7s-hS-hc8"/>
-                            <constraint firstItem="ucO-5r-SmP" firstAttribute="height" secondItem="o3v-Kj-rhW" secondAttribute="height" multiplier="0.883047" priority="750" id="scG-hO-qZ9"/>
+                            <constraint firstItem="ucO-5r-SmP" firstAttribute="height" secondItem="o3v-Kj-rhW" secondAttribute="height" priority="750" id="scG-hO-qZ9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="NeoSTORE" id="n8E-tE-3XP">
@@ -377,7 +377,7 @@
                                 <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="140" id="p7I-IQ-da9" customClass="ProductListTableViewCell" customModule="NeoStore" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductListTableViewCell" rowHeight="140" id="p7I-IQ-da9" customClass="ProductListTableViewCell" customModule="NeoStore" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="414" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="p7I-IQ-da9" id="9fq-Vq-8wy">
@@ -598,8 +598,8 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="bdb-hB-TsM"/>
                                                         </constraints>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" image="share"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" image="share"/>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chairsicon" translatesAutoresizingMaskIntoConstraints="NO" id="UNK-xR-rSo">
                                                         <rect key="frame" x="43" y="53" width="268" height="185"/>

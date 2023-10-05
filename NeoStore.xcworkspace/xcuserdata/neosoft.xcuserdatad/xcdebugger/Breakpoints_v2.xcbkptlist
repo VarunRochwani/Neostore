@@ -36,14 +36,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "D5FDBAA9-B226-4286-A6A8-73F5A90211AC - 305afe521dc06fc7"
+                  uuid = "D5FDBAA9-B226-4286-A6A8-73F5A90211AC - 4961bafd83596f6a"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "NeoStore.RatingViewModel.setRating(Swift.Int, Swift.Int) -&gt; ()"
                   moduleName = "NeoStore"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/neosoft/Desktop/NeoStore%202%202/NeoStore/Home/ViewModel/RatingViewModel.swift"
+                  urlString = "file:///Users/neosoft/Desktop/Neostore/Neostore/NeoStore/Home/ViewModel/RatingViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "25"
@@ -51,14 +51,14 @@
                   offsetFromSymbolStart = "340">
                </Location>
                <Location
-                  uuid = "D5FDBAA9-B226-4286-A6A8-73F5A90211AC - 68e81d434f711320"
+                  uuid = "D5FDBAA9-B226-4286-A6A8-73F5A90211AC - 11d359ecd1e8138d"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.Optional&lt;NeoStore.RatingResponseModel&gt;) -&gt; () in NeoStore.RatingViewModel.setRating(Swift.Int, Swift.Int) -&gt; ()"
                   moduleName = "NeoStore"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/neosoft/Desktop/NeoStore%202%202/NeoStore/Home/ViewModel/RatingViewModel.swift"
+                  urlString = "file:///Users/neosoft/Desktop/Neostore/Neostore/NeoStore/Home/ViewModel/RatingViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "27"
@@ -94,40 +94,40 @@
             filePath = "NeoStore/LoginRegistration/View/ViewController/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "register(_:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "1C7469BC-4AE1-434C-BCC9-AD7FCBF3E08F - 897c15f34e77b555"
+                  uuid = "1C7469BC-4AE1-434C-BCC9-AD7FCBF3E08F - 951b241cac1b12ce"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "NeoStore.RegistrationViewController.register(Any) -&gt; ()"
                   moduleName = "NeoStore"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/neosoft/Desktop/NeoStore%202/NeoStore/LoginRegistration/View/ViewController/RegistrationViewController.swift"
+                  urlString = "file:///Users/neosoft/Desktop/Neostore/Neostore/NeoStore/LoginRegistration/View/ViewController/RegistrationViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "93"
-                  endingLineNumber = "93"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
                   offsetFromSymbolStart = "2604">
                </Location>
                <Location
-                  uuid = "1C7469BC-4AE1-434C-BCC9-AD7FCBF3E08F - 61884f63e950658"
+                  uuid = "1C7469BC-4AE1-434C-BCC9-AD7FCBF3E08F - 1a7fb519dcf9a1df"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.String, Swift.Int) -&gt; () in NeoStore.RegistrationViewController.register(Any) -&gt; ()"
                   moduleName = "NeoStore"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/neosoft/Desktop/NeoStore%202/NeoStore/LoginRegistration/View/ViewController/RegistrationViewController.swift"
+                  urlString = "file:///Users/neosoft/Desktop/Neostore/Neostore/NeoStore/LoginRegistration/View/ViewController/RegistrationViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "141">
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "109">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -158,8 +158,8 @@
             filePath = "NeoStore/LoginRegistration/View/ViewController/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "register(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -206,8 +206,8 @@
             filePath = "NeoStore/LoginRegistration/View/ViewController/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "register(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -222,8 +222,8 @@
             filePath = "NeoStore/LoginRegistration/ViewModel/RegisterViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "validateAndRegister(user:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -244,14 +244,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "2FA58CFA-85A9-434D-A065-45B91FF9FEC5 - bf9b5253ffb784cb"
+                  uuid = "2FA58CFA-85A9-434D-A065-45B91FF9FEC5 - d496dd98f641bc17"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "NeoStore.EditProfileViewController.submitBtnAction(Any) -&gt; ()"
                   moduleName = "NeoStore"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/neosoft/Desktop/NeoStore%202%202/NeoStore/Account/View/EditProfileViewController.swift"
+                  urlString = "file:///Users/neosoft/Desktop/Neostore/Neostore/NeoStore/Account/View/EditProfileViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "60"
@@ -259,14 +259,14 @@
                   offsetFromSymbolStart = "3285">
                </Location>
                <Location
-                  uuid = "2FA58CFA-85A9-434D-A065-45B91FF9FEC5 - 2a615d2f6fd72916"
+                  uuid = "2FA58CFA-85A9-434D-A065-45B91FF9FEC5 - 416cd2e4662111ca"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (NeoStore.SuccessResponse) -&gt; () in NeoStore.EditProfileViewController.submitBtnAction(Any) -&gt; ()"
                   moduleName = "NeoStore"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/neosoft/Desktop/NeoStore%202%202/NeoStore/Account/View/EditProfileViewController.swift"
+                  urlString = "file:///Users/neosoft/Desktop/Neostore/Neostore/NeoStore/Account/View/EditProfileViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "61"
@@ -327,38 +327,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C4956FDC-EEFD-4F57-9DE0-88856660181B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NeoStore/Home/ViewModel/MyCartViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "fetchCartData(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8860D05A-6239-4BEA-934F-61C6659D7FCE"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NeoStore/Home/ViewModel/MyCartViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "fetchCartData(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "8395A908-5623-4340-9888-96BA86CEB6F5"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -372,14 +340,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "8395A908-5623-4340-9888-96BA86CEB6F5 - bb6f3fcbd025d6d4"
+                  uuid = "8395A908-5623-4340-9888-96BA86CEB6F5 - 78cdd751203ee43c"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (NeoStore.MyCartModel) -&gt; () in NeoStore.MyCartViewController.fetchCartDetails() -&gt; ()"
                   moduleName = "NeoStore"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/neosoft/Desktop/NeoStore%202%202/NeoStore/Home/Extension/Extension+MyCartViewController.swift"
+                  urlString = "file:///Users/neosoft/Desktop/Neostore/Neostore/NeoStore/Home/Extension/Extension+MyCartViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "115"
@@ -387,14 +355,14 @@
                   offsetFromSymbolStart = "689">
                </Location>
                <Location
-                  uuid = "8395A908-5623-4340-9888-96BA86CEB6F5 - bb6f3fcbd025d6d4"
+                  uuid = "8395A908-5623-4340-9888-96BA86CEB6F5 - 78cdd751203ee43c"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (NeoStore.MyCartModel) -&gt; () in NeoStore.MyCartViewController.fetchCartDetails() -&gt; ()"
                   moduleName = "NeoStore"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/neosoft/Desktop/NeoStore%202%202/NeoStore/Home/Extension/Extension+MyCartViewController.swift"
+                  urlString = "file:///Users/neosoft/Desktop/Neostore/Neostore/NeoStore/Home/Extension/Extension+MyCartViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "115"
@@ -407,16 +375,80 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D355050B-3F59-4B59-9AFB-250BFD2EB68B"
+            uuid = "42802AA3-BB50-40A9-937F-0406D14ADFC4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NeoStore/Home/View/ViewController/MyCartViewController.swift"
+            filePath = "NeoStore/Home/Extension/Extension+ProductDetailViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5427F44D-6DBF-4575-8D78-B3361DCAA229"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NeoStore/Home/Extension/Extension+ProductListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2A7C54EF-C755-48DF-8DC2-1B9EEE27D5AB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NeoStore/Home/View/ViewController/ProductListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
             landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6FBA50B7-C624-4D56-970A-451FF7DE31BD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NeoStore/Home/Extension/Extension+ProductListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "fetchProductListData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3E44D72E-179D-4C30-88C8-D8012213DABC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NeoStore/Home/Extension/Extension+ProductListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

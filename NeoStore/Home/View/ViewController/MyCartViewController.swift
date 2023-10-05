@@ -13,9 +13,7 @@ class MyCartViewController: NavigationViewController {
     @IBOutlet weak var myCartTableView: UITableView!
     
     let myCartViewModel = MyCartViewModel()
-    
-    var cartList :[ProdData]?
-//    var productList:[Product]
+
     var quantity:Int = 0
     var totalAmt = 0
     

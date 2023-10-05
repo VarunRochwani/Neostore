@@ -42,7 +42,6 @@ class RegisterViewModel{
     
 
         do{
-
             try httpUtility.postApiData(requestUrl: UrlConstants.registerUrl, requestBody: user.asDictionary, resultType:SuccessResponse.self) { result in
                 if result?.status == 200{
                     completion(result?.message ?? "",200)

@@ -14,7 +14,6 @@ class ProductListViewController: UIViewController {
     @IBOutlet weak var productListTableView : UITableView!
     
     var productCategoryId:Int = 0
-    var productListData:[ProductData]?
     let productListViewModel = ProductListViewModel()
     
     let navigationBarUtility = NavigationBarUtility()
@@ -23,7 +22,14 @@ class ProductListViewController: UIViewController {
         super.viewDidLoad()
         fetchProductListData()
         configureNavBar(productCategoryId)
+        
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        <#code#>
+//    }
+    
+    
 }
 
 

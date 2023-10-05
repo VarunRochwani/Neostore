@@ -30,6 +30,7 @@ class PopUpViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("initialization failed")
     }
+    
     init(image:String,name:String){
         super.init(nibName: nil, bundle: nil)
         self.productNameText = name

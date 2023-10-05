@@ -12,6 +12,8 @@ class MyCartViewModel{
     
     let httpUtility = HttpUtility.getUtility()
     
+    var cartList :[ProdData]?
+    
     func fetchCartData(_ completion:@escaping(_ detailResponse:MyCartModel)->Void){
         let accessToken = UserDefaults.standard.string(forKey: "access_token")
         
@@ -19,6 +21,7 @@ class MyCartViewModel{
         
         do {
             try httpUtility.getApiData(requestUrl: UrlConstants.fetchCartDetails, requestBody: [:], resultType:MyCartModel.self ,completionHandler: { result in
+                self.cartList = result?.data
                 completion(result!)
                 
             },headers:headers)

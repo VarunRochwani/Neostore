@@ -27,18 +27,13 @@ class AddToCartViewModel{
         let header : HTTPHeaders = ["access_token":accessToken ?? ""]
         do {
             try  httpUtility.postApiData(requestUrl: UrlConstants.addToCartUrl, requestBody: requestBody, resultType:AddToCartApiResponse.self , completionHandler: { result in
-
-//                if result?.status == 200{
-//
+                
                     guard let result1 = result else{
                         return
                     }
                 
                     self.delegate.getAddtoCartResponse(result1)
-//                }
-//                else{
-//
-//                }
+
             },headers:header)
        
         } catch let error {

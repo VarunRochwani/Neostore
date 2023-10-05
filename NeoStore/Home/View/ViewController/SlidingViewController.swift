@@ -21,10 +21,9 @@ class SlidingViewController: UIViewController {
     @IBOutlet weak var navigationDrawerTableView: UITableView!
     
     let navigationDrawerViewModel = NavigationDrawerViewModel()
-    var naviagtionDrawerdetails:NavigationDrawerModel?
-    let NavigationDrawerOptionsList = DrawerOptions().optionsList
+    let NavigationDrawerOptionsList = NavigationDrawerViewModel.getOptionList()
     
-    //var delegate : GetScreen?
+    
     
     override func viewDidLoad() {
     super.viewDidLoad()

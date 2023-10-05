@@ -11,24 +11,24 @@ import iOSDropDown
 
 extension ProductListViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return productListData?.count ?? 0
+        return productListViewModel.productListData?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ProductListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.productListTableViewCell) as! ProductListTableViewCell
         
-        cell.configureCell(productListData![indexPath.row])
-        cell.setRating(productListData![indexPath.row].rating!)
+        cell.configureCell(productListViewModel.productListData![indexPath.row])
+        cell.setRating(productListViewModel.productListData![indexPath.row].rating!)
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let storyBoard = UIStoryboard(name: "Home", bundle: nil)
-        let productDetailVC = storyBoard.instantiateViewController(withIdentifier: "ProductDetailViewController") as! ProductDetailViewController
+        let storyBoard = UIStoryboard(name: Constant.homeStoryBoard , bundle: nil)
+        let productDetailVC = storyBoard.instantiateViewController(withIdentifier: Constant.productDetailVcIdentifier) as! ProductDetailViewController
 
-        productDetailVC.productId = productListData?[indexPath.row].id
+        productDetailVC.productId = productListViewModel.productListData?[indexPath.row].id
         self.navigationController?.pushViewController(productDetailVC, animated: true)
     }
 }
@@ -36,11 +36,10 @@ extension ProductListViewController: UITableViewDelegate,UITableViewDataSource{
 extension ProductListViewController {
     func fetchProductListData(){
         productListViewModel.fetchProductList(productCategoryId) { result in
-            print(result?.data)
-            self.productListData = result?.data
+            //self.productListData = result?.data
             self.productListTableView.reloadData()
         }
-    }
+    } 
     func configureNavBar(_ productCategoryId:Int){
         
         switch productCategoryId{
@@ -55,7 +54,7 @@ extension ProductListViewController {
             navigationBarUtility.setTitle("Sofa", self)
             break
         case 4:
-            navigationBarUtility.setTitle("CupBoard", self)
+            navigationBarUtility.setTitle("Cupboard", self)
             break
         default:
             break

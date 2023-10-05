@@ -18,9 +18,9 @@ class LoginViewModel{
         //let requestBody = ["email":"mfm@gmail.com","password":"mf@123"]
         do {
             try httpUtility.postApiData(requestUrl: UrlConstants.loginUrl, requestBody: requestBody, resultType: SuccessResponse.self, completionHandler: { result in
-              
+                
                successLogin(result!)
-            
+              //use guard let to handle if data didn't came
             })
         } catch let error {
             print(error)

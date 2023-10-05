@@ -11,8 +11,8 @@ import Alamofire
 class NavigationDrawerViewModel{
     
     let httpUtility = HttpUtility.getUtility()
+    var naviagtionDrawerdetails:NavigationDrawerModel?
     
-    //var model:UserData?
     
     func fetchNavigationDrawerData(_ completion:@escaping(_ detailResponse:NavigationDrawerModel)->Void){
         let accessToken = UserDefaults.standard.string(forKey: "access_token")
@@ -21,12 +21,17 @@ class NavigationDrawerViewModel{
 
         do {
             try httpUtility.getApiData(requestUrl: UrlConstants.fetchAccountDetailsUrl, requestBody: [:], resultType:NavigationDrawerModel.self, completionHandler: { result in
+                self.naviagtionDrawerdetails = result
                     completion(result!)
                 
             },headers:headers)
         } catch let error {
             debugPrint(error)
         }
+    }
+    
+    static func getOptionList() -> [Option]{
+        return DrawerOptions().optionsList
     }
     
 }

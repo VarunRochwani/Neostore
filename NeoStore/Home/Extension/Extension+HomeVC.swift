@@ -77,8 +77,8 @@ extension HomeViewController{
     }
     
     func presentProductListViewController(_ contentId:Int){
-        let storyBoard =  UIStoryboard(name: "Home", bundle: nil)
-        let productListViewController = storyBoard.instantiateViewController(identifier: "ProductListViewController") as ProductListViewController
+        let storyBoard =  UIStoryboard(name: Constant.homeStoryBoard, bundle: nil)
+        let productListViewController = storyBoard.instantiateViewController(identifier: Constant.productListVcIdentifier) as ProductListViewController
         productListViewController.productCategoryId = contentId
         
         self.navigationController?.pushViewController(productListViewController, animated: true)
@@ -88,8 +88,8 @@ extension HomeViewController{
 
         self.navigationController?.navigationBar.barTintColor = .red
         self.navigationController?.navigationBar.isHidden = false
-        navigationBarUtility.setTitle("NeoSTORE ", self)
-        navigationBarUtility.configureRightBarButton(image:"search_icon",style:.plain,target:self,action:#selector(onMenuClick),vc: self)
+        navigationBarUtility.setTitle(Constant.neostoreTitle, self)
+        navigationBarUtility.configureRightBarButton(image:Images.searchIcon,style:.plain,target:self,action:#selector(onMenuClick),vc: self)
     }
     @objc func onMenuClick(){
         
@@ -97,36 +97,36 @@ extension HomeViewController{
 
     
     func navigateToNavigationDrawersMenu(_ index:Int){
-       let homeStoryBoard = UIStoryboard(name: "Home", bundle: nil)
+        let homeStoryBoard = UIStoryboard(name: Constant.homeStoryBoard, bundle: nil)
 //
 //        let orderStoryBoard = UIStoryboard(name: "Order", bundle: nil)
 //        let accountStoryBoard = UIStoryboard(name: "Account", bundle: nil)
-       let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let mainStoryBoard = UIStoryboard(name: Constant.mainStoryBoard, bundle: nil)
         
         switch index{
         case 0:
-            self.navigate(storyBoard: "Home", identifier: "MyCartViewController", vc: self)
+            self.navigate(storyBoard: Constant.homeStoryBoard, identifier: Constant.myCartVcIdentifier, vc: self)
             break
         case 1,2,3,4:
             
-            let productListVc = homeStoryBoard.instantiateViewController(withIdentifier: "ProductListViewController") as! ProductListViewController
+            let productListVc = homeStoryBoard.instantiateViewController(withIdentifier: Constant.productListVcIdentifier) as! ProductListViewController
             productListVc.productCategoryId = index
             self.navigationController?.pushViewController(productListVc, animated: true)
             
             break
         case 5:
-            self.navigate(storyBoard: "Account", identifier: "MyAccountViewController", vc: self)
+            self.navigate(storyBoard: Constant.accountStoryBoard, identifier: Constant.myAccountVcIdentifier, vc: self)
             break
         case 6:
-            self.navigate(storyBoard: "Home", identifier: "MyStoreViewController", vc: self)
+            self.navigate(storyBoard: Constant.homeStoryBoard, identifier: Constant.myStoreVcIdentifier, vc: self)
             break
         case 7:
-            self.navigate(storyBoard: "Order", identifier: "OrderListViewController", vc: self)
+            self.navigate(storyBoard: Constant.orderStoryBoard, identifier: Constant.orderListVcIdentifier, vc: self)
             
             break
         case 8:
-            UserDefaults.standard.set(false, forKey: "isLoggedIn")
-            let loginVc = mainStoryBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            UserDefaults.standard.set(false, forKey: Constant.isLoggedIn)
+            let loginVc = mainStoryBoard.instantiateViewController(withIdentifier: Constant.loginVcIdentifier) as! LoginViewController
             self.navigationController?.pushViewController(loginVc, animated: true)
             self.navigationController?.navigationBar.isHidden = true
             break

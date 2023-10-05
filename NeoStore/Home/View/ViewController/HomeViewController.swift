@@ -29,9 +29,6 @@ class HomeViewController: NavigationViewController {
         setUpPageControl()
         scrollViewDidScroll(homeImageSlider)
         configureNavigationBar()
-        
-        //ManageObserver()
-        //hii
     }
 
 }
