@@ -40,12 +40,6 @@ class RegistrationViewController: NavigationViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        firstNameView.setupUI()
-        lastNameView.setupUI()
-        emailView.setupUI()
-        passwordView.setupUI()
-        cnfPasswordView.setupUI()
-        phoneNumberView.setupUI()
         setUpNavBar()
         maleButton.tag = 1
         femaleButton.tag = 2
@@ -56,22 +50,22 @@ class RegistrationViewController: NavigationViewController {
         if sender.tag == 1{
             maleImage.image = UIImage(named: Images.checkedCheckBox)
             femaleImage.image = UIImage(named:Images.uncheckedCheckBox)
-            gender = "M"
+            gender = Constant.male
         }else if  sender.tag==2{
             maleImage.image = UIImage(named: Images.uncheckedCheckBox)
             femaleImage.image = UIImage(named: Images.checkedCheckBox)
-            gender = "F"
+            gender = Constant.female
         }
     }
     
     
     @IBAction func onClickCheckBox(_ sender: Any) {
         if checkBoxFlag{
-            checkBoxImage.image = UIImage(named: "uncheck_icon")
+            checkBoxImage.image = UIImage(named: Images.uncheckedCheckBox)
             checkBoxFlag = false
         }else{
             checkBoxFlag = true
-            checkBoxImage.image = UIImage(named: "checked_icon")
+            checkBoxImage.image = UIImage(named: Images.checkedCheckBox)
         }
         
     }
@@ -79,8 +73,8 @@ class RegistrationViewController: NavigationViewController {
    //MARK: NAVIGATION BAR
     func setUpNavBar(){
         self.navigationController?.navigationBar.isHidden = false
-        navigationBarUtility.setTitle("Register", self)
-        navigationBarUtility.configureLeftBarButton(image: "chevron.left", style: .plain, target: self, action: #selector(leftButtonClick), vc: self)
+        navigationBarUtility.setTitle(Constant.registerTitle, self)
+        navigationBarUtility.configureLeftBarButton(image: Images.leftBackButton, style: .plain, target: self, action: #selector(leftButtonClick), vc: self)
     }
 
     @objc func leftButtonClick(){
@@ -96,7 +90,7 @@ class RegistrationViewController: NavigationViewController {
                 
                 if statusCode == 200{
                     AlertUtility.showAlert(message, "Registered Successfully", self)
-                    self.navigate(storyBoard: "Main", identifier: "LoginViewController", vc: self)
+                    self.navigate(storyBoard: Constant.mainStoryBoard, identifier: Constant.loginVcIdentifier, vc: self)
                     self.navigationController?.navigationBar.isHidden = true
                 }
                 else{

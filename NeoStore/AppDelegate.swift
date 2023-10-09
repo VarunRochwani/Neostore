@@ -31,15 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().barTintColor = .red
         
-        
         if isLoggedIn(){
-           let storyBoard = UIStoryboard(name: "Home", bundle: nil)
-            let homeVc = storyBoard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            let storyBoard = UIStoryboard(name: Constant.homeStoryBoard, bundle: nil)
+            let homeVc = storyBoard.instantiateViewController(withIdentifier: Constant.homeVcIdentifier) as! HomeViewController
              navigationController = UINavigationController(rootViewController: homeVc)
                         window?.rootViewController = navigationController
         }else{
-            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-             let LoginVc = storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            let storyBoard = UIStoryboard(name: Constant.mainStoryBoard, bundle: nil)
+            let LoginVc = storyBoard.instantiateViewController(withIdentifier: Constant.loginVcIdentifier) as! LoginViewController
               navigationController = UINavigationController(rootViewController: LoginVc)
                          window?.rootViewController = navigationController
         }
@@ -48,9 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
  
-
     func isLoggedIn() -> Bool {
-        return UserDefaults.standard.bool(forKey: "isLoggedIn")
+        return UserDefaults.standard.bool(forKey: Constant.isLoggedInKey)
     }
 
 }

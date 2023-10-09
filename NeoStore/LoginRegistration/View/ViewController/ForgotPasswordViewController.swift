@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ForgotPasswordViewController: UIViewController {
+class ForgotPasswordViewController: NavigationViewController {
 
     @IBOutlet weak var forgotEmailView : BorderedField!
     
@@ -17,7 +17,6 @@ class ForgotPasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        forgotEmailView.setupUI()
     }
     
     @IBAction func continueBtnClick(_ sender: Any) {
@@ -29,9 +28,7 @@ class ForgotPasswordViewController: UIViewController {
         if( forgotPasswordViewModel.checkEmptyValidation(emailText)){
             forgotPasswordViewModel.forgotPassword(emailText) { Response in
                 AlertUtility.showAlert(Response.message ?? "", "Check Your Email", self)
-                let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-                let loginViewController = mainStoryBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-                self.navigationController?.pushViewController( loginViewController, animated: true)
+                self.navigate(storyBoard: Constant.mainStoryBoard, identifier: Constant.loginVcIdentifier, vc: self)
             }
         }
     }

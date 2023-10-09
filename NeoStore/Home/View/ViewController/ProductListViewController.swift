@@ -22,13 +22,7 @@ class ProductListViewController: UIViewController {
         super.viewDidLoad()
         fetchProductListData()
         configureNavBar(productCategoryId)
-        
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        <#code#>
-//    }
-    
     
 }
 

@@ -16,7 +16,6 @@ extension ProductListViewController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constant.productListTableViewCell) as! ProductListTableViewCell
-        
         cell.configureCell(productListViewModel.productListData![indexPath.row])
         cell.setRating(productListViewModel.productListData![indexPath.row].rating!)
         cell.selectionStyle = .none
@@ -36,7 +35,6 @@ extension ProductListViewController: UITableViewDelegate,UITableViewDataSource{
 extension ProductListViewController {
     func fetchProductListData(){
         productListViewModel.fetchProductList(productCategoryId) { result in
-            //self.productListData = result?.data
             self.productListTableView.reloadData()
         }
     } 
@@ -45,23 +43,23 @@ extension ProductListViewController {
         switch productCategoryId{
             
         case 1:
-            navigationBarUtility.setTitle("Tables", self)
+            navigationBarUtility.setTitle(Constant.categoryTable, self)
             break
         case 2:
-            navigationBarUtility.setTitle("Chairs", self)
+            navigationBarUtility.setTitle(Constant.categoryChair, self)
             break
         case 3:
-            navigationBarUtility.setTitle("Sofa", self)
+            navigationBarUtility.setTitle(Constant.categorySofa, self)
             break
         case 4:
-            navigationBarUtility.setTitle("Cupboard", self)
+            navigationBarUtility.setTitle(Constant.categoryCupboard, self)
             break
         default:
             break
         }
         
-        navigationBarUtility.configureRightBarButton(image:"search_icon",style:.plain,target:self,action:nil,vc: self)
-        navigationBarUtility.configureLeftBarButton(image: "chevron.left", style: .plain, target: self, action: #selector(leftButtonClick), vc: self)
+        navigationBarUtility.configureRightBarButton(image:Images.searchIcon,style:.plain,target:self,action:nil,vc: self)
+        navigationBarUtility.configureLeftBarButton(image: Images.leftBackButton, style: .plain, target: self, action: #selector(leftButtonClick), vc: self)
     }
    
     @objc func leftButtonClick(){

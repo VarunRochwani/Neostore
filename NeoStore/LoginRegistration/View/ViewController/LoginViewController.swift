@@ -27,10 +27,8 @@ class LoginViewController: NavigationViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        userNameView.setupUI()
-        passwordView.setupUI()
-        userName.attributedPlaceholder = NSAttributedString(string: "Username", attributes:attributes)
-        password.attributedPlaceholder = NSAttributedString(string: "Password",attributes: attributes)
+        userName.attributedPlaceholder = NSAttributedString(string: Constant.username, attributes:attributes)
+        password.attributedPlaceholder = NSAttributedString(string: Constant.password,attributes: attributes)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapFunc(_:)))
         self.forgotPasswordLbl.isUserInteractionEnabled = true
@@ -43,9 +41,9 @@ class LoginViewController: NavigationViewController {
         
         loginViewModel.login(loginCredentials) { result in
             if result.status == 200{
-                self.navigate(storyBoard: "Home", identifier: "HomeViewController", vc: self)
-                UserDefaults.standard.set(true, forKey: "isLoggedIn")
-                UserDefaults.standard.set(result.data?.accessToken, forKey: "access_token")
+                self.navigate(storyBoard: Constant.homeStoryBoard, identifier: Constant.homeVcIdentifier, vc: self)
+                UserDefaults.standard.set(true, forKey: Constant.isLoggedInKey)
+                UserDefaults.standard.set(result.data?.accessToken, forKey: Constant.accessTokenKey)
             }
             else{
                 AlertUtility.showAlert(result.message ?? "", "something went wrong", self)
@@ -55,12 +53,12 @@ class LoginViewController: NavigationViewController {
     
     @IBAction func naviagetToRegister(_ sender: Any) {
         
-        self.navigate(storyBoard: "Main", identifier: "RegistrationViewController", vc: self)
+        self.navigate(storyBoard: Constant.mainStoryBoard, identifier: Constant.registerVcIdentifier, vc: self)
         
     }
 
     @objc func tapFunc(_ gestureRecognizer: UITapGestureRecognizer) {
-        self.navigate(storyBoard: "Main", identifier: "ForgotPasswordViewController", vc: self)
+        self.navigate(storyBoard: Constant.mainStoryBoard, identifier: Constant.forgotPasswordVcIdentifier, vc: self)
     }
 
 }

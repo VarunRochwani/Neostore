@@ -11,12 +11,13 @@ import Alamofire
 class EditProfileViewModel{
     
     let httpUtility = HttpUtility.getUtility()
+    var editProfileData: EditProfileDataModel?
     
     func editProfile(_ editedData:EditProfileDataModel,_ completion:@escaping(_ result:SuccessResponse)->()){
         
-        let accessToken = UserDefaults.standard.string(forKey: "access_token")
+        let accessToken = UserDefaults.standard.string(forKey: Constant.accessTokenKey)
         
-        let headers : HTTPHeaders = ["access_token":accessToken ?? ""]
+        let headers : HTTPHeaders = [Constant.accessTokenKey:accessToken ?? ""]
         
         do{
             try httpUtility.postApiData(requestUrl: UrlConstants.updateAccountDetails, requestBody: editedData.toDictionary(), resultType: SuccessResponse.self, completionHandler: { result in
@@ -28,6 +29,13 @@ class EditProfileViewModel{
         } catch let error {
             debugPrint(error)
         }
+    }
+    
+    func getEditData() ->EditProfileDataModel?{
+        return editProfileData
+    }
+    func setEditData(editData:EditProfileDataModel) {
+        editProfileData = editData
     }
     
 }

@@ -22,6 +22,7 @@ class RatePopUpViewController: UIViewController, getRatingApiDelegate {
     @IBOutlet var ratingView: CosmosView!
     var productNameText = ""
     var productId = 0
+    var productImageString = ""
     var rating:Int = 3
     
     var ratingViewModel = RatingViewModel()
@@ -29,7 +30,7 @@ class RatePopUpViewController: UIViewController, getRatingApiDelegate {
     init(image:String,name:String,rating:Int){
         super.init(nibName: nil, bundle: nil)
         self.productNameText = name
-        self.loadImage(image)
+        self.productImageString = image
         
     }
     
@@ -40,6 +41,7 @@ class RatePopUpViewController: UIViewController, getRatingApiDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         productNameLbl.text = productNameText
+        self.productImage.loadImage(imgString: productImageString)
         setUpRating()
     }
     
@@ -58,17 +60,6 @@ class RatePopUpViewController: UIViewController, getRatingApiDelegate {
 
 
 extension RatePopUpViewController {
-    func loadImage(_ Url:String){
-        if let img = URL(string: Url) {
-            URLSession.shared.dataTask(with: img) { (data, response, error) in
-                if let data = data, let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self.productImage.image = image
-                    }
-                }
-            }.resume()
-        }
-    }
     
     func setUpRating() {
         

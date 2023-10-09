@@ -12,6 +12,8 @@ class OrderListViewModel{
     
     let httpUtility = HttpUtility.getUtility()
     
+    var orderList:[Order] = []
+    
     func fetchOrderList(_ completion:@escaping(_ detailResponse:OrderListModel)->Void){
         let accessToken = UserDefaults.standard.string(forKey: "access_token")
         
@@ -19,7 +21,9 @@ class OrderListViewModel{
         
         do {
             try httpUtility.getApiData(requestUrl: UrlConstants.orderListUrl, requestBody: [:], resultType:OrderListModel.self ,completionHandler: { result in
-                completion(result!)
+               
+                    self.orderList = result?.data ?? []
+                    completion(result!)
                 
             },headers:headers)
         } catch let error {
@@ -27,4 +31,11 @@ class OrderListViewModel{
         }
     }
     
+    func getOrderListCount() -> Int{
+        return orderList.count
+    }
+    
+    func getOrderList() -> [Order]{
+        return orderList
+    }
 }

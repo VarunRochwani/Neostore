@@ -24,7 +24,7 @@ class ShippingAddressViewController: NavigationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTableView()
-        fetchAddressListData()
+        //fetchAddressListData()
         setShippingAddressList()
         setUpNavBar()
     }
@@ -34,49 +34,32 @@ class ShippingAddressViewController: NavigationViewController {
 extension ShippingAddressViewController{
     
     func setUpTableView(){
-        shippingAddressTableView.register(UINib(nibName: "FooterTableViewCell", bundle: nil), forCellReuseIdentifier: "FooterTableViewCell")
+        shippingAddressTableView.register(UINib(nibName: Constant.footerTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.footerTableViewCell)
         
     }
     
-    func fetchAddressListData(){
-        let addressFetch: NSFetchRequest<Address> = Address.fetchRequest()
-        
-        do {
-            let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
-            let results = try managedContext.fetch(addressFetch)
-            addressList = results
-        } catch let error as NSError {
-            print("Fetch error: \(error) description: \(error.userInfo)")
-        }
-    }
     func setShippingAddressList(){
-        guard let list = addressList else{
-            return
-        }
-        for i in 0..<list.count  {
-            ShippingAddressList.append(shippingAddressAndBtn(address: addressList?[i].address,buttonImage: UIImage(named: "unchecked"),isSelected: false))
-        }
-                
+        addressList = shippingAddressViewModel.fetchAddressListData()
+
+        ShippingAddressList = shippingAddressViewModel.setShippingAddressList()
     }
     
     func setUpNavBar(){
         
-        navigationBarUtility.setTitle("Address List", self)
-        
-        
-        
-        let rightBarButtonImage = UIImage(systemName: "plus")
+        navigationBarUtility.setTitle(Constant.addressListTitle, self)
+     
+        let rightBarButtonImage = UIImage(systemName: Images.add)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: rightBarButtonImage, style:.plain, target: self, action: #selector(rightButtonClick))
         self.navigationItem.rightBarButtonItem?.tintColor=UIColor.white
         
-        navigationBarUtility.configureLeftBarButton(image: "chevron.left", style: .plain, target: self, action: #selector(leftButtonClick), vc: self)
+        navigationBarUtility.configureLeftBarButton(image: Images.leftBackButton, style: .plain, target: self, action: #selector(leftButtonClick), vc: self)
     }
 
     @objc func leftButtonClick(){
         self.navigationController?.popViewController(animated: true)
     }
     @objc func rightButtonClick(){
-        self.navigate(storyBoard: "Order", identifier: "AddressViewController", vc: self)
+        self.navigate(storyBoard: Constant.orderStoryBoard, identifier: Constant.addressVcIdentifier, vc: self)
     }
     
 }

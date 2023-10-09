@@ -11,16 +11,16 @@ import UIKit
 extension ProductDetailViewController{
     func fetchAndSetUpProductDetails(){
         productDetailViewModel.getProductDetail(productId ?? 0) { [self] ProductDetail in
-//            productDetail = productDetailViewModel.productDetail
             navigationBarUtility.setTitle(productDetailViewModel.productDetail?.name ?? "", self)
             self.productNameLbl.text = productDetailViewModel.productDetail?.name
             self.producerLbl.text = productDetailViewModel.productDetail?.producer
             setProductCategory(productDetailViewModel.productDetail?.productCategoryID ?? 0)
             setProductRating(productDetailViewModel.productDetail?.rating ?? 0)
-            costLbl.text = "Rs.\(productDetailViewModel.productDetail?.cost)"
+            costLbl.text = "Rs.\(productDetailViewModel.productDetail?.cost ?? 0)"
             descriptionLbl.text = productDetailViewModel.productDetail?.description
-            loadImage(productDetailViewModel.productDetail?.productImages[0].image ?? "")
+            selectedProductImage.loadImage(imgString: productDetailViewModel.productDetail?.productImages[0].image ?? "")
             selectedImageUrl=productDetailViewModel.productDetail?.productImages[0].image ?? ""
+            productImagesCollectionView.reloadData()
         }
         
     }
@@ -28,16 +28,16 @@ extension ProductDetailViewController{
     func setProductCategory(_ productCategoryId:Int){
         switch productCategoryId{
         case 1:
-            self.categoryNameLbl.text = "Category-Tables"
+            self.categoryNameLbl.text = Constant.categoryTableLbl
             break
         case 2:
-            self.categoryNameLbl.text = "Category-Chairs"
+            self.categoryNameLbl.text = Constant.categoryChairLbl
             break
         case 3:
-            self.categoryNameLbl.text = "Category-Sofa"
+            self.categoryNameLbl.text = Constant.categorySofaLbl
             break
         case 4:
-            self.categoryNameLbl.text = "Category-CupBoard"
+            self.categoryNameLbl.text = Constant.categoryCupboardLbl
             break
         default:
             break
@@ -76,23 +76,10 @@ extension ProductDetailViewController{
             break
         }
     }
-    
-    func loadImage(_ Url:String){
-        if let img = URL(string: Url) {
-            URLSession.shared.dataTask(with: img) { (data, response, error) in
-                if let data = data, let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                       
-                        self.selectedProductImage.image = image
-                    }
-                }
-            }.resume()
-        }
-    }
-    
+
     func setUpNavBar(){
-        navigationBarUtility.configureRightBarButton(image:"search_icon",style:.plain,target:self,action:nil,vc: self)
-        navigationBarUtility.configureLeftBarButton(image: "chevron.left", style: .plain, target: self, action: #selector(leftButtonClick), vc: self)
+        navigationBarUtility.configureRightBarButton(image:Images.searchIcon,style:.plain,target:self,action:nil,vc: self)
+        navigationBarUtility.configureLeftBarButton(image: Images.leftBackButton, style: .plain, target: self, action: #selector(leftButtonClick), vc: self)
     }
 
     @objc func leftButtonClick(){
@@ -108,7 +95,7 @@ extension ProductDetailViewController:UICollectionViewDelegate,UICollectionViewD
         }
         
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for:indexPath ) as! ProductDetailCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.productDetailCollectionViewCell, for:indexPath ) as! ProductDetailCollectionViewCell
             
             cell.setProductCellImage((productDetailViewModel.productDetail?.productImages[indexPath.row])!)
             if indexPath.row == 0{
@@ -134,7 +121,7 @@ extension ProductDetailViewController:UICollectionViewDelegate,UICollectionViewD
             
             selectedImageUrl = productDetailViewModel.productDetail?.productImages[indexPath.row].image ?? ""
             
-            loadImage(productDetailViewModel.productDetail?.productImages[indexPath.row].image ?? "")
+            selectedProductImage.loadImage(imgString: productDetailViewModel.productDetail?.productImages[indexPath.row].image ?? "")
             
             var selectedIndexPath :IndexPath?
             
@@ -146,16 +133,11 @@ extension ProductDetailViewController:UICollectionViewDelegate,UICollectionViewD
             collectionView.cellForItem(at: indexPath)?.isSelected = true
             
         }
-    
-    
-        
     }
 extension ProductDetailViewController:PopDismissDelegate{
     func didSubmitButton() {
         popUpVc?.dismiss(animated: true)
-        self.navigate(storyBoard: "Home", identifier: "MyCartViewController", vc: self)
+        self.navigate(storyBoard: Constant.homeStoryBoard, identifier: Constant.myCartVcIdentifier , vc: self)
     }
-    
-    
 }
 

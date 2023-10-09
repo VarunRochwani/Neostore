@@ -14,7 +14,7 @@ class ProductListViewModel {
     var productListData:[ProductData]?
 
     func fetchProductList(_ productCategoryId:Int,completion:@escaping((ProductListModel?)->Void)){
-        let requestBody = ["product_category_id":productCategoryId]
+        let requestBody = [Constant.productCategoryId:productCategoryId]
         do {
             try httpUtility.getApiData(requestUrl: UrlConstants.getProductListUrl, requestBody:requestBody, resultType:ProductListModel.self , completionHandler: { result in
                 if result?.status == 200{

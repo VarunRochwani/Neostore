@@ -22,9 +22,9 @@ class AddressViewController: NavigationViewController {
     
     @IBOutlet weak var saveAddressBtn: ButtonStyle!
     
-    var address = [Address]()
-    
     let navigationBarUtility = NavigationBarUtility()
+    
+    let addressViewModel = AddressViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +33,10 @@ class AddressViewController: NavigationViewController {
     
     func setUpNavBar(){
         
-        navigationBarUtility.setTitle("Add Address", self)
+        navigationBarUtility.setTitle(Constant.addAddressTitle, self)
         
-        navigationBarUtility.configureRightBarButton(image:"search_icon",style:.plain,target:self,action:nil,vc: self)
-        navigationBarUtility.configureLeftBarButton(image: "chevron.left", style: .plain, target: self, action: #selector(leftButtonClick), vc: self)
+        navigationBarUtility.configureRightBarButton(image:Images.searchIcon,style:.plain,target:self,action:nil,vc: self)
+        navigationBarUtility.configureLeftBarButton(image: Images.leftBackButton, style: .plain, target: self, action: #selector(leftButtonClick), vc: self)
     }
 
     @objc func leftButtonClick(){
@@ -45,19 +45,11 @@ class AddressViewController: NavigationViewController {
     
     @IBAction func saveAddress(_ sender: Any) {
         
-        let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
-        let newAddress = Address(context: managedContext)
-        newAddress.setValue(addressTextView.text, forKey: #keyPath(Address.address))
-        newAddress.setValue(landMarkTextField.text, forKey: #keyPath(Address.landmark))
-        newAddress.setValue(city.text, forKey: #keyPath(Address.city))
-        newAddress.setValue(stateTextField.text, forKey: #keyPath(Address.state))
-        newAddress.setValue(countryTextField.text, forKey:#keyPath(Address.country))
-        newAddress.setValue(Double(zipCodeTextFeild.text ?? ""), forKey:#keyPath(Address.zipcode))
+        let addressModel = AddressModel(address: addressTextView.text, landmark: landMarkTextField.text ?? "", city: city.text ?? "", state: stateTextField.text ?? "", country: countryTextField.text ?? "", zipcode: zipCodeTextFeild.text ?? "")
         
-        self.address.insert(newAddress, at: 0)
-        AppDelegate.sharedAppDelegate.coreDataStack.saveContext()
+        addressViewModel.saveAddress(address: addressModel)
         
-        self.navigate(storyBoard: "Order", identifier: "ShippingAddressViewController", vc: self)
+        self.navigate(storyBoard: Constant.orderStoryBoard, identifier: Constant.shippingAddressViewController, vc: self)
         
     }
     

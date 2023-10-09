@@ -15,7 +15,7 @@ extension OrderListViewController{
         
         orderListViewModel.fetchOrderList { detailResponse in
             if detailResponse.status == 200{
-                self.orderList = detailResponse.data
+//                self.orderList = detailResponse.data
                 self.orderListTableView.reloadData()
             }
             else{
@@ -26,36 +26,36 @@ extension OrderListViewController{
 }
 extension OrderListViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return orderList.count
+        orderListViewModel.getOrderListCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "OrderListTableViewCell", for: indexPath) as! OrderListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.orderListTableViewCell, for: indexPath) as! OrderListTableViewCell
         
-        cell.orderIdLbl.text = "Order ID: \(orderList[indexPath.row].id)"
-        cell.orderDate.text = "Order Date: "+orderList[indexPath.row].created
-        cell.orderAmount.text = "₹ \(orderList[indexPath.row].cost)"
+        cell.orderIdLbl.text = "\(Constant.orderIdLbl) \(orderListViewModel.getOrderList()[indexPath.row].id)"
+        cell.orderDate.text = "\(Constant.orderDateLbl) "+orderListViewModel.getOrderList()[indexPath.row].created
+        cell.orderAmount.text = "₹ \(orderListViewModel.getOrderList()[indexPath.row].cost)"
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        let orderStoryBoard = UIStoryboard(name: "Order", bundle: nil)
-        let orderDetailVc = orderStoryBoard.instantiateViewController(withIdentifier: "OrderDetailViewController") as! OrderDetailViewController
-        orderDetailVc.orderId = orderList[indexPath.row].id
+        let orderStoryBoard = UIStoryboard(name: Constant.orderStoryBoard, bundle: nil)
+        let orderDetailVc = orderStoryBoard.instantiateViewController(withIdentifier: Constant.orderDetailVcIdentifier) as! OrderDetailViewController
+        orderDetailVc.orderId = orderListViewModel.getOrderList()[indexPath.row].id
         self.navigationController?.pushViewController(orderDetailVc, animated: true)
     }
     
     func setUpNavBar(){
         
-        navigationBarUtility.setTitle("My Orders", self)
+        navigationBarUtility.setTitle(Constant.myOrders, self)
         
-        navigationBarUtility.configureRightBarButton(image:"search_icon",style:.plain,target:self,action:nil,vc: self)
-        navigationBarUtility.configureLeftBarButton(image: "chevron.left", style: .plain, target: self, action: #selector(leftButtonClick), vc: self)
+        navigationBarUtility.configureRightBarButton(image:Images.searchIcon,style:.plain,target:self,action:nil,vc: self)
+        navigationBarUtility.configureLeftBarButton(image: Images.leftBackButton, style: .plain, target: self, action: #selector(leftButtonClick), vc: self)
     }
 
     @objc func leftButtonClick(){
-        self.navigate(storyBoard: "Home", identifier: "HomeViewController", vc: self)
+        self.navigate(storyBoard:Constant.homeStoryBoard, identifier: Constant.homeVcIdentifier, vc: self)
     }
 }

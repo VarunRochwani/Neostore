@@ -15,9 +15,9 @@ class MyCartViewModel{
     var cartList :[ProdData]?
     
     func fetchCartData(_ completion:@escaping(_ detailResponse:MyCartModel)->Void){
-        let accessToken = UserDefaults.standard.string(forKey: "access_token")
+        let accessToken = UserDefaults.standard.string(forKey: Constant.accessTokenKey)
         
-        let headers : HTTPHeaders = ["access_token":accessToken ?? ""]
+        let headers : HTTPHeaders = [Constant.accessTokenKey:accessToken ?? ""]
         
         do {
             try httpUtility.getApiData(requestUrl: UrlConstants.fetchCartDetails, requestBody: [:], resultType:MyCartModel.self ,completionHandler: { result in
@@ -32,9 +32,9 @@ class MyCartViewModel{
     
     
     func editCartData(_ params:[String:Any] ,_ completion:@escaping(_ detailResponse:AddToCartApiResponse)->Void){
-        let accessToken = UserDefaults.standard.string(forKey: "access_token")
+        let accessToken = UserDefaults.standard.string(forKey: Constant.accessTokenKey)
         
-        let headers : HTTPHeaders = ["access_token":accessToken ?? ""]
+        let headers : HTTPHeaders = [Constant.accessTokenKey:accessToken ?? ""]
         
         do {
             try httpUtility.postApiData(requestUrl: UrlConstants.editCartDetails, requestBody: params, resultType: AddToCartApiResponse.self, completionHandler: { result in
@@ -50,9 +50,9 @@ class MyCartViewModel{
     
     
     func deleteCartData(_ params:[String:Any] ,_ completion:@escaping(_ detailResponse:AddToCartApiResponse)->Void){
-        let accessToken = UserDefaults.standard.string(forKey: "access_token")
+        let accessToken = UserDefaults.standard.string(forKey: Constant.accessTokenKey)
         
-        let headers : HTTPHeaders = ["access_token":accessToken ?? ""]
+        let headers : HTTPHeaders = [Constant.accessTokenKey:accessToken ?? ""]
         
         do {
             try httpUtility.postApiData(requestUrl: UrlConstants.deleteCartDetails, requestBody: params, resultType: AddToCartApiResponse.self, completionHandler: { result in

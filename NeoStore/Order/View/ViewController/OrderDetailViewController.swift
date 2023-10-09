@@ -12,14 +12,15 @@ class OrderDetailViewController: UIViewController {
     
     @IBOutlet weak var orderDetailtableView: UITableView!{
         didSet{
-            orderDetailtableView.register(UINib(nibName: "FooterOrderDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "FooterOrderDetailTableViewCell")
+            orderDetailtableView.register(UINib(nibName: Constant.footerOrderDetailTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.footerOrderDetailTableViewCell)
             orderDetailtableView.tableFooterView =  UIView()
         }
     }
-    var orderDetails :[OrderDetail]?
+
     var totalAmount:Int?
-    let orderdetailViewModel = OrderDetailViewModel()
     var orderId:Int?
+    let orderdetailViewModel = OrderDetailViewModel()
+    
     
     let navigationBarUtility = NavigationBarUtility()
     

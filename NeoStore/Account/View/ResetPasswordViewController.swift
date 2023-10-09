@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ResetPasswordViewController: UIViewController {
+class ResetPasswordViewController: NavigationViewController {
 
     
     @IBOutlet weak var currentPasswordView: BorderedField!
@@ -39,9 +39,7 @@ class ResetPasswordViewController: UIViewController {
         resetPasswordViewModel.resetPassword(resetPasswordModel) { result in
             if result.status == 200{
                 AlertUtility.showAlert(result.message ?? "", result.message ?? "", self)
-                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-                let loginViewController = storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-                self.navigationController?.pushViewController(loginViewController, animated: true)
+                self.navigate(storyBoard: Constant.mainStoryBoard, identifier: Constant.loginVcIdentifier, vc: self)
             }
             else{
                 AlertUtility.showAlert(result.message ?? "", result.message ?? "", self)
@@ -50,8 +48,8 @@ class ResetPasswordViewController: UIViewController {
     }
     
     func setUpNavBar(){
-        navigationBarUtility.setTitle("Reset Password", self)
-        navigationBarUtility.configureLeftBarButton(image: "chevron.left", style: .plain, target: self, action: #selector(leftButtonClick), vc: self)
+        navigationBarUtility.setTitle(Constant.resetPasswordTitle, self)
+        navigationBarUtility.configureLeftBarButton(image: Images.leftBackButton, style: .plain, target: self, action: #selector(leftButtonClick), vc: self)
     }
     @objc func leftButtonClick(){
         self.navigationController?.popViewController(animated: true)

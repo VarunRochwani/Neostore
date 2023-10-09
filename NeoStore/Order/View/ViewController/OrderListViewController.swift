@@ -15,7 +15,6 @@ class OrderListViewController: NavigationViewController {
             orderListTableView.tableFooterView = UIView()
         }
     }
-    var orderList:[Order] = []
     
     let orderListViewModel = OrderListViewModel()
     

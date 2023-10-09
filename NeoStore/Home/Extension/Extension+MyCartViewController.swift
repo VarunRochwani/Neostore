@@ -19,17 +19,17 @@ extension MyCartViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let orderNowTableViewCell = tableView.dequeueReusableCell(withIdentifier: "OrderNowTableViewCell", for: indexPath) as! OrderNowTableViewCell
+        let orderNowTableViewCell = tableView.dequeueReusableCell(withIdentifier: Constant.orderNowTableViewCell, for: indexPath) as! OrderNowTableViewCell
         
         switch indexPath.row{
         case myCartViewModel.cartList?.count:
             orderNowTableViewCell.totalAmt.text = "₹.\(self.totalAmt)"
             orderNowTableViewCell.orderNowClick = {
-                self.navigate(storyBoard: "Order", identifier: "ShippingAddressViewController", vc: self)
+                self.navigate(storyBoard: Constant.orderStoryBoard, identifier: Constant.shippingAddressViewController, vc: self)
             }
             return orderNowTableViewCell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MyCartTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constant.myCartTableViewCell, for: indexPath) as! MyCartTableViewCell
             
             cell.selectionStyle = .none
             cell.productNameLbL.text = myCartViewModel.cartList?[indexPath.row].product.name
@@ -51,7 +51,7 @@ extension MyCartViewController:UITableViewDelegate,UITableViewDataSource{
                 guard let _ = self else { return }
                 cell.quantityDropDown.text = item
                 
-                let param = ["product_id":self?.myCartViewModel.cartList?[indexPath.row].product.id ?? 0,"quantity":item]
+                let param = [Constant.productId:self?.myCartViewModel.cartList?[indexPath.row].product.id ?? 0,Constant.quantity:item]
                 
                 //Edit cart Api call
                 self?.myCartViewModel.editCartData(param) { detailResponse in
@@ -72,27 +72,18 @@ extension MyCartViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
             let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, complete in
 
-                let param = ["product_id": self.myCartViewModel.cartList?[indexPath.row].product.id]
+                let param = [Constant.productId: self.myCartViewModel.cartList?[indexPath.row].product.id]
                 self.myCartViewModel.deleteCartData(param as [String : Any]) { detailResponse in
                     self.fetchCartDetails()
                     complete(true)
                 }
             }
             
-            deleteAction.image = UIImage(named: "delete")
+        deleteAction.image = UIImage(named: Images.delete)
             deleteAction.backgroundColor = .white
             
             let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
             configuration.performsFirstActionWithFullSwipe = true
-        
-//        let param = ["product_id": cartList?[indexPath.row].product.id]
-//        myCartViewModel.deleteCartData(param as [String : Any]) { detailResponse in
-//            self.fetchCartDetails()
-//            DispatchQueue.main.async {
-//                self.myCartTableView.reloadData()
-//            }
-//        }
-        
         
             return configuration
         }
@@ -120,7 +111,7 @@ extension MyCartViewController{
     }
     
     func setUpTableView(){
-        myCartTableView.register(UINib(nibName: "OrderNowTableViewCell", bundle: nil), forCellReuseIdentifier: "OrderNowTableViewCell")
+        myCartTableView.register(UINib(nibName: Constant.orderNowTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.orderNowTableViewCell)
         myCartTableView.tableFooterView = UIView()
     }
 

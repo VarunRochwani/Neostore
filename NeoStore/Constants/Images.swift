@@ -29,4 +29,18 @@ struct Images{
     static let menuIcon = "menu_icon"
     static let searchIcon = "search_icon"
     
+    static let addressUnchecked = "unchecked"
+    static let addressChecked = "checked"
+    static let add = "plus"
+    
+    static let shoppingCartIcon = "shoppingcart_icon"
+    static let tableIcon = "table"
+    static let sofaIcon = "sofa"
+    static let logoutIcon = "logout_icon"
+    static let myOrdersIcon = "myorders_icon"
+    static let storeLocatorIcon = "storelocator_icon"
+    static let userNameIcon = "username_icon"
+    static let cupboardIcon = "cupboard"
+    static let chairIcon = "chair"
+    static let delete = "delete"
 }

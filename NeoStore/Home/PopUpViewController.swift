@@ -16,9 +16,8 @@ class PopUpViewController: UIViewController {
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var quantity: UITextField!
     @IBOutlet weak var submitBtn: UIButton!
-    
-    @IBOutlet weak var popUpView: UIView!
 
+    @IBOutlet weak var popUpView: UIView!
     var productId = 0
     let httpUtility = HttpUtility.getUtility()
     
@@ -27,6 +26,7 @@ class PopUpViewController: UIViewController {
     let addToCartViewModel = AddToCartViewModel()
     
     var productNameText = ""
+    var pImage = ""
     required init?(coder: NSCoder) {
         fatalError("initialization failed")
     }
@@ -34,12 +34,14 @@ class PopUpViewController: UIViewController {
     init(image:String,name:String){
         super.init(nibName: nil, bundle: nil)
         self.productNameText = name
-        self.loadImage(image)
-
+        self.pImage = image
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         productName.text = productNameText
+        self.productImage.loadImage(imgString: pImage)
+
     }
     
     @IBAction func removeBtn(_ sender: Any) {
@@ -72,20 +74,4 @@ extension PopUpViewController:AddTocartDelegate{
                 self.present(alert, animated: false, completion: nil)
             } 
     }
-    
-        
-    func loadImage(_ Url:String){
-        if let img = URL(string: Url) {
-            URLSession.shared.dataTask(with: img) { (data, response, error) in
-                if let data = data, let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self.productImage.image = image
-                    }
-                }
-            }.resume()
-        }
-    }
-
-    
-    
 }

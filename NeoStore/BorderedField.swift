@@ -9,7 +9,11 @@ import UIKit
 
 class BorderedField: UIView {
 
-     func setupUI() {
+    required init?(coder: NSCoder) {
+           super.init(coder: coder)
+           setUpUI()
+       }
+     func setUpUI() {
             layer.borderWidth = 2.0
             layer.borderColor = UIColor.white.cgColor
         }

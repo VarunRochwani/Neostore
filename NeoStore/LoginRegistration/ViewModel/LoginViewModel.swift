@@ -13,7 +13,7 @@ class LoginViewModel{
     
     func login(_ credentials:Credentials,_ successLogin:@escaping((SuccessResponse) -> Void)){
     
-        let requestBody = ["email":credentials.email,"password":credentials.password]
+        let requestBody = [Constant.email:credentials.email,Constant.passwordParam:credentials.password]
         
         //let requestBody = ["email":"mfm@gmail.com","password":"mf@123"]
         do {

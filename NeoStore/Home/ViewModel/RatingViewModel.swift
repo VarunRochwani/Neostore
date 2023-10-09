@@ -19,7 +19,7 @@ class RatingViewModel{
     
     func setRating(_ rating:Int ,_ productId:Int){
     
-        let requestBody = ["product_id":productId,"rating":rating]
+        let requestBody = [Constant.productId:productId,Constant.rating:rating]
         
         do {
             try  httpUtility.postApiData(requestUrl: UrlConstants.setRatingUrl, requestBody: requestBody, resultType:RatingResponseModel.self , completionHandler: { result in

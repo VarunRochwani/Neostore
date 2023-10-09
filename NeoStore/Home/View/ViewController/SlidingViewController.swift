@@ -22,9 +22,7 @@ class SlidingViewController: UIViewController {
     
     let navigationDrawerViewModel = NavigationDrawerViewModel()
     let NavigationDrawerOptionsList = NavigationDrawerViewModel.getOptionList()
-    
-    
-    
+ 
     override func viewDidLoad() {
     super.viewDidLoad()
         setProfileImage()

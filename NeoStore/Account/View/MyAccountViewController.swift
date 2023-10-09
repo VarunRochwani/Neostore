@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyAccountViewController: UIViewController {
+class MyAccountViewController: NavigationViewController {
 
     @IBOutlet weak var firstNameView: BorderedField!
     @IBOutlet weak var lastNameView: BorderedField!
@@ -30,100 +30,75 @@ class MyAccountViewController: UIViewController {
     
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var dateOfBirthTextField: UITextField!
-    
-    var accountDetails:NavigationDrawerModel?
-    var editProfileData:EditProfileDataModel?
+
+//    var editProfileData:EditProfileDataModel?
     
     let navigationDrawerViewModel = NavigationDrawerViewModel()
     
     let navigationBarUtility = NavigationBarUtility()
+    
+   var editProfileData : ((EditProfileDataModel) -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpProfilePicture()
         fetchAccountDetails()
         setUpNavBar()
-        setUpBorder()
-        // Do any additional setup after loading the view.
+      
     }
     
     override func viewDidAppear(_ animated: Bool) {
         fetchAccountDetails()
     }
     @IBAction func editProfileClick(_ sender: Any) {
-        let storyBoard = UIStoryboard(name: "Account", bundle: nil)
-        var editProfileViewController = storyBoard.instantiateViewController(withIdentifier: "EditProfileViewController") as! EditProfileViewController
-        editProfileViewController.editProfileData = self.editProfileData
+        
+        let storyBoard = UIStoryboard(name: Constant.accountStoryBoard, bundle: nil)
+        let editProfileViewController = storyBoard.instantiateViewController(withIdentifier: Constant.editProfileViewController) as! EditProfileViewController
+        
+        let editData = navigationDrawerViewModel.getEditProfileData()
+        editProfileViewController.editProfileViewModel.setEditData(editData: editData)
         self.navigationController?.pushViewController(editProfileViewController, animated: true)
+
     }
     
     @IBAction func resetPassword(_ sender: Any) {
         
-        let storyBoard = UIStoryboard(name: "Account", bundle: nil)
-        let resetPasswordViewController = storyBoard.instantiateViewController(withIdentifier: "ResetPasswordViewController") as! ResetPasswordViewController
-        self.navigationController?.pushViewController(resetPasswordViewController, animated: true)
-        
+        self.navigate(storyBoard: Constant.accountStoryBoard, identifier: Constant.resetPasswordViewController, vc: self)
     }
-    
-    
 }
-
 
 extension MyAccountViewController{
     func setUpProfilePicture(){
         let profileLayer = profileImage.layer
-        profileImage.layer.borderWidth = 1
-        profileImage.layer.masksToBounds = false
-        profileImage.layer.cornerRadius = 100
+        profileLayer.borderWidth = 1
+        profileLayer.masksToBounds = false
+        profileLayer.cornerRadius = 100
         profileImage.clipsToBounds = true
     }
     
     func fetchAccountDetails(){
         navigationDrawerViewModel.fetchNavigationDrawerData {
-            result in
-            if result.status == 200{
-                self.accountDetails = result
-                self.loadImage(result.data.userData.profilePic ?? "")
-                self.firstNameTextField.text = self.accountDetails?.data.userData.firstName
-                self.lastNameTextField.text = self.accountDetails?.data.userData.lastName
-                self.emailTextField.text = self.accountDetails?.data.userData.email
-                self.phoneTextField.text = self.accountDetails?.data.userData.phoneNo
-                self.dateOfBirthTextField.text = self.accountDetails?.data.userData.dob
-                
-                self.editProfileData = EditProfileDataModel(firstName: self.accountDetails?.data.userData.firstName ?? "" , lastName: self.accountDetails?.data.userData.lastName ?? "", email: self.accountDetails?.data.userData.email ?? "", dob: self.accountDetails?.data.userData.dob ?? "", profilePic: result.data.userData.profilePic ?? "", phoneNo: self.accountDetails?.data.userData.phoneNo ?? "")
-                
-            }else{
-                AlertUtility.showAlert("details not found", "Something went Wrong", self)
-            }
+        
+            self.profileImage.loadImage(imgString:self.navigationDrawerViewModel.getProfilePic())
+            self.firstNameTextField.text = self.navigationDrawerViewModel.getfirstName()
+            self.lastNameTextField.text = self.navigationDrawerViewModel.getLastName()
+            self.emailTextField.text = self.navigationDrawerViewModel.getEmail()
+            self.phoneTextField.text = self.navigationDrawerViewModel.getPhoneNo()
+            self.dateOfBirthTextField.text = self.navigationDrawerViewModel.getDob()
         }
-    }
-    
-    func loadImage(_ Url:String){
-        if let img = URL(string: Url) {
-            URLSession.shared.dataTask(with: img) { (data, response, error) in
-                if let data = data, let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self.profileImage.image = image
-                    }
-                }
-            }.resume()
+
+       
+        
         }
-    }
+
     func setUpNavBar(){
-        navigationBarUtility.setTitle("My Account", self)
-        navigationBarUtility.configureRightBarButton(image:"search_icon",style:.plain,target:self,action:nil,vc: self)
-        navigationBarUtility.configureLeftBarButton(image: "chevron.left", style: .plain, target: self, action: #selector(leftButtonClick), vc: self)
+        navigationBarUtility.setTitle(Constant.myAccountTitle, self)
+        navigationBarUtility.configureRightBarButton(image:Images.searchIcon,style:.plain,target:self,action:nil,vc: self)
+        navigationBarUtility.configureLeftBarButton(image: Images.leftBackButton, style: .plain, target: self, action: #selector(leftButtonClick), vc: self)
     }
 
     @objc func leftButtonClick(){
         self.navigationController?.popViewController(animated: true)
     }
-    
-    func setUpBorder(){
-        firstNameView.setupUI()
-        lastNameView.setupUI()
-        emailView.setupUI()
-        phoneView.setupUI()
-        dobView.setupUI()
-    }
+
 }

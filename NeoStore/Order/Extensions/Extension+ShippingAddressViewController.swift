@@ -10,28 +10,28 @@ import UIKit
 
 extension ShippingAddressViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ShippingAddressList.count + 1
+        shippingAddressViewModel.getShippingAddressListCount() + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ShippingAddressTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.shippingAddressTableViewCell, for: indexPath) as! ShippingAddressTableViewCell
         
-        let footerCell = tableView.dequeueReusableCell(withIdentifier: "FooterTableViewCell", for: indexPath) as! FooterTableViewCell
+        let footerCell = tableView.dequeueReusableCell(withIdentifier: Constant.footerTableViewCell, for: indexPath) as! FooterTableViewCell
         
         footerCell.placeOrderClicked = {
             self.placeOrderApi()
            }
         
         
-        if indexPath.row == ShippingAddressList.count {
+        if indexPath.row == shippingAddressViewModel.getShippingAddressListCount() {
             return footerCell
         }else{
             if ShippingAddressList[indexPath.row].isSelected == true{
-                cell.setImage(imageName: "checked")
+                cell.setImage(imageName: Images.addressChecked)
             }else{
-                cell.setImage(imageName: "unchecked")
+                cell.setImage(imageName: Images.addressUnchecked)
             }
-            cell.addressLbl.text = (ShippingAddressList[indexPath.row].address ?? "")
+            cell.addressLbl.text = (shippingAddressViewModel.getShippingAddressList()[indexPath.row].address ?? "")
             cell.tag = indexPath.row
             cell.selectionStyle = .none
             cell.removebtnClick = { [weak self] iIndex in
@@ -71,7 +71,7 @@ extension ShippingAddressViewController:UITableViewDelegate,UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! ShippingAddressTableViewCell
-        cell.setImage(imageName: "checked")
+        cell.setImage(imageName: Images.addressChecked)
         ShippingAddressList[indexPath.row].isSelected = true
         
         
@@ -83,7 +83,7 @@ extension ShippingAddressViewController:UITableViewDelegate,UITableViewDataSourc
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? ShippingAddressTableViewCell{
             ShippingAddressList[indexPath.row].isSelected = false
-            cell.setImage(imageName: "unchecked")
+            cell.setImage(imageName: Images.addressUnchecked)
         }
     }
 }
@@ -101,7 +101,7 @@ extension ShippingAddressViewController{
                 if OrderResonseModel.status == 200{
                     AlertUtility.showAlert(OrderResonseModel.message,OrderResonseModel.userMsg,self)
                     
-                    self.navigate(storyBoard: "Order", identifier: "OrderListViewController", vc: self)
+                    self.navigate(storyBoard: Constant.orderStoryBoard, identifier: Constant.orderListVcIdentifier, vc: self)
                 }
             }
         }

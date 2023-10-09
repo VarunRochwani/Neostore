@@ -14,9 +14,9 @@ class ResetPasswordViewModel{
     
     func resetPassword(_ resetpasswordModel:ResetPasswordModel,_ completion:@escaping(_ result:Response)->()){
         
-        let accessToken = UserDefaults.standard.string(forKey: "access_token")
+        let accessToken = UserDefaults.standard.string(forKey: Constant.accessTokenKey)
         
-        let headers : HTTPHeaders = ["access_token":accessToken ?? ""]
+        let headers : HTTPHeaders = [Constant.accessTokenKey:accessToken ?? ""]
         
         do{
             try httpUtility.postApiData(requestUrl: UrlConstants.resetPasswordUrl, requestBody: resetpasswordModel.toDictionary(), resultType: Response.self, completionHandler: { result in

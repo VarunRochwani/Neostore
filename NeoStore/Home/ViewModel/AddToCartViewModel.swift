@@ -21,10 +21,10 @@ class AddToCartViewModel{
     
     func callAddtoCartApi(_ quantity:Int,_ productId:Int){
         
-        let requestBody = ["product_id":productId,"quantity":quantity]
-        let accessToken = UserDefaults.standard.string(forKey: "access_token")
+        let requestBody = [Constant.productId:productId,Constant.quantity:quantity]
+        let accessToken = UserDefaults.standard.string(forKey: Constant.accessTokenKey)
         
-        let header : HTTPHeaders = ["access_token":accessToken ?? ""]
+        let header : HTTPHeaders = [Constant.accessTokenKey:accessToken ?? ""]
         do {
             try  httpUtility.postApiData(requestUrl: UrlConstants.addToCartUrl, requestBody: requestBody, resultType:AddToCartApiResponse.self , completionHandler: { result in
                 

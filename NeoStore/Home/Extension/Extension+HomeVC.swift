@@ -125,7 +125,7 @@ extension HomeViewController{
             
             break
         case 8:
-            UserDefaults.standard.set(false, forKey: Constant.isLoggedIn)
+            UserDefaults.standard.set(false, forKey: Constant.isLoggedInKey)
             let loginVc = mainStoryBoard.instantiateViewController(withIdentifier: Constant.loginVcIdentifier) as! LoginViewController
             self.navigationController?.pushViewController(loginVc, animated: true)
             self.navigationController?.navigationBar.isHidden = true

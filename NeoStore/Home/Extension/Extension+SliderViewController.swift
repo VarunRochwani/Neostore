@@ -18,33 +18,16 @@ extension SlidingViewController{
         profilePicture.clipsToBounds = true
     }
     func fetchAccountDetails(){
-        navigationDrawerViewModel.fetchNavigationDrawerData {
-            detailResponse in
-            if detailResponse.status == 200{
-                self.loadImage(detailResponse.data.userData.profilePic ?? "")
-                self.userName.text = detailResponse.data.userData.username
-                self.emailLbl.text = detailResponse.data.userData.email
-                DispatchQueue.main.async {
-                    self.navigationDrawerTableView.reloadData()
-                }
-            }else{
-                AlertUtility.showAlert("details not found", "Something went Wrong", self)
-            }
-        }
-    }
-    
-    func loadImage(_ Url:String){
-        if let img = URL(string: Url) {
-            URLSession.shared.dataTask(with: img) { (data, response, error) in
-                if let data = data, let image = UIImage(data: data) {
+        navigationDrawerViewModel.fetchNavigationDrawerData { [self] in
+            profilePicture.loadImage(imgString: navigationDrawerViewModel.getProfilePic())
+            self.userName.text = navigationDrawerViewModel.getUserName()
+                    self.emailLbl.text = navigationDrawerViewModel.getEmail()
                     DispatchQueue.main.async {
-                       
-                        self.profilePicture.image = image
-                    }
+                        self.navigationDrawerTableView.reloadData()
                 }
-            }.resume()
         }
-    }
+        
+        }
 }
 
 extension SlidingViewController:UITableViewDataSource,UITableViewDelegate{
@@ -55,7 +38,7 @@ extension SlidingViewController:UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:
-                                                    "cell", for: indexPath) as! NavigationDrawerTableViewCell
+                                                    Constant.navigationDrawerTableViewCell, for: indexPath) as! NavigationDrawerTableViewCell
         guard let drawerdetail = navigationDrawerViewModel.naviagtionDrawerdetails else{
             return UITableViewCell()
         }
@@ -65,7 +48,7 @@ extension SlidingViewController:UITableViewDataSource,UITableViewDelegate{
         cell.cartCountView.layer.cornerRadius = cell.cartCountView.frame.height/2
         cell.cartCountView.clipsToBounds = true
         
-        if NavigationDrawerOptionsList[indexPath.row].optionlabel != "MyCart"{
+        if NavigationDrawerOptionsList[indexPath.row].optionlabel != Constant.myCart{
             cell.cartCountView.isHidden = true
         }
         return cell

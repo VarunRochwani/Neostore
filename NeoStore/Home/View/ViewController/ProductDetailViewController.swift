@@ -31,18 +31,13 @@ class ProductDetailViewController: NavigationViewController {
     
     @IBOutlet weak var buyNowBtn: UIButton!
     @IBOutlet weak var rateBtn: UIButton!
-    
-   
-    
+
     var productId : Int?
     let productDetailViewModel = ProductDetailViewModel()
-    //var productImageDetails:[ProductImage]?
-//    var productDetail:ProductDetails?
     var selectedImageUrl:String = ""
-   
+
     var popUpVc:PopUpViewController?
     var rateNowPopUpVc:RatePopUpViewController?
-    
     let navigationBarUtility = NavigationBarUtility()
     
     override func viewDidLoad() {
@@ -56,7 +51,6 @@ class ProductDetailViewController: NavigationViewController {
     }
     
     @IBAction func buyNowClicked(_ sender: Any) {
-        
         popUpVc = PopUpViewController(image:selectedImageUrl , name: productDetailViewModel.productDetail?.name ?? "")
         popUpVc?.modalPresentationStyle = .overCurrentContext
         popUpVc?.modalTransitionStyle = .crossDissolve

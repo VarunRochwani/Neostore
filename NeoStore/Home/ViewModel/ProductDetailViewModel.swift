@@ -14,7 +14,7 @@ class ProductDetailViewModel{
     var productDetail:ProductDetails?
     func getProductDetail(_ productId:Int,_ completion:@escaping(ProductDetails)->Void){
         
-        let requestBody = ["product_id":productId]
+        let requestBody = [Constant.productId:productId]
         
         do {
             try httpUtility.getApiData(requestUrl: UrlConstants.getProductDetailUrl, requestBody: requestBody, resultType:ProductDetailModel.self) { result in

@@ -28,14 +28,14 @@ class MyCartViewController: NavigationViewController {
     
     func setUpNavBar(){
         
-        navigationBarUtility.setTitle("My Cart", self)
+        navigationBarUtility.setTitle(Constant.myCartTitle, self)
         
-        navigationBarUtility.configureRightBarButton(image:"search_icon",style:.plain,target:self,action:nil,vc: self)
-        navigationBarUtility.configureLeftBarButton(image: "chevron.left", style: .plain, target: self, action: #selector(leftButtonClick), vc: self)
+        navigationBarUtility.configureRightBarButton(image:Images.searchIcon,style:.plain,target:self,action:nil,vc: self)
+        navigationBarUtility.configureLeftBarButton(image: Images.leftBackButton, style: .plain, target: self, action: #selector(leftButtonClick), vc: self)
     }
 
     @objc func leftButtonClick(){
-        self.navigate(storyBoard: "Home", identifier: "HomeViewController", vc: self)
+        self.navigate(storyBoard: Constant.homeStoryBoard, identifier: Constant.homeVcIdentifier, vc: self)
     }
 
 }
